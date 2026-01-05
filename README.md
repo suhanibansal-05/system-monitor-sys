@@ -2,7 +2,6 @@
 
 A distributed Linux system monitoring and autoscaling prototype built with Python and FastAPI.
 
----
 
 ## Overview
 
@@ -12,12 +11,7 @@ Collected metrics are sent to a central FastAPI server, which applies **reactive
 
 The system was prototyped using **WSL2**, but the architecture is cloud-agnostic and transferable to VM, container, or HPC environments.
 
----
 
-## How It Works
-
-
----
 
 ## Autoscaling Logic
 
@@ -36,7 +30,7 @@ The system was prototyped using **WSL2**, but the architecture is cloud-agnostic
 - Estimates near-future load from trends
 - Triggers predictive scale-up on sustained load
 
----
+
 
 ## Tech Stack
 
@@ -46,7 +40,6 @@ The system was prototyped using **WSL2**, but the architecture is cloud-agnostic
 - scikit-learn
 - Linux / WSL2
 
----
 
 ## Running the Project
 
@@ -67,3 +60,4 @@ export NODE_ID=node_A
 python agent/agent.py
 ```
 Done! you have a working monitoring system.
+
