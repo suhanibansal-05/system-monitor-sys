@@ -1,57 +1,60 @@
-**System Resource Monitor & Predictive Auto-Scaler**
-Distributed Linux Monitoring with Python & FastAPI
+# System Resource Monitor & Predictive Auto-Scaler
 
-**Overview**
+A distributed Linux system monitoring and autoscaling prototype built with Python and FastAPI.
 
-This project implements a distributed system resource monitoring and autoscaling framework for Linux-based environments. Lightweight monitoring agents run on multiple nodes to collect real-time CPU, memory, and disk I/O metrics, which are sent to a centralized FastAPI server.
+---
 
-The system supports both threshold-based (reactive) and predictive (proactive) autoscaling decisions using historical metrics, enabling smarter resource utilization and reduced risk of performance degradation.
+## Overview
 
-The project was prototyped and validated using WSL2, with a cloud-agnostic architecture that can be adapted to VM, container, or HPC environments.
+This project monitors **CPU, memory, and disk I/O** across multiple Linux nodes using lightweight agents.
 
-**Key Features**
+Collected metrics are sent to a central FastAPI server, which applies **reactive** and **predictive autoscaling logic** to decide scaling actions.
 
-Distributed Linux agents for real-time system monitoring
+The system was prototyped using **WSL2**, but the architecture is cloud-agnostic and transferable to VM, container, or HPC environments.
 
-High-concurrency REST APIs built with FastAPI
+---
 
-Threshold-based autoscaling decisions
-
-Predictive autoscaling using recent historical trends
-
-Time-series metric logging for ML-based analysis
-
-Designed and tested in a Linux-compatible WSL2 environment
-
-**Tech Stack**
-
-Language: Python
-
-Backend Framework: FastAPI, Uvicorn
-
-System Monitoring: psutil
-
-Prediction / ML: scikit-learn
-
-Environment: Linux (WSL2)
+## How It Works
 
 
+---
 
-How to Run
-1️⃣ Set up virtual environment
+## Autoscaling Logic
+
+### Reactive (Threshold-Based)
+
+- **Scale Up**
+  - CPU > 75%
+  - Memory > 80%
+- **Scale Down**
+  - CPU < 30%
+  - Memory < 40%
+
+### Predictive (Proactive)
+
+- Maintains a rolling window of recent CPU values
+- Estimates near-future load from trends
+- Triggers predictive scale-up on sustained load
+
+---
+
+## Tech Stack
+
+- Python
+- FastAPI + Uvicorn
+- psutil
+- scikit-learn
+- Linux / WSL2
+
+---
+
+## Running the Project
+
+### 1. Setup environment
+
+```bash
 python3 -m venv venv
 source venv/bin/activate
-
-2️⃣ Install dependencies
 pip install fastapi uvicorn psutil requests pandas scikit-learn
 
-3️⃣ Start the API server
-python -m uvicorn api.main:app --reload
-
-4️⃣ Run monitoring agents (in separate terminals)
-export NODE_ID=node_A
-python agent/agent.py
-
-
-You can run multiple agents with different NODE_IDs to simulate distributed nodes.
 
