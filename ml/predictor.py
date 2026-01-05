@@ -3,7 +3,7 @@ from sklearn.linear_model import LinearRegression
 
 df = pd.read_csv("data/metrics.csv")
 
-# Simple time-based prediction
+
 X = df[["timestamp"]]
 y = df["cpu"]
 
