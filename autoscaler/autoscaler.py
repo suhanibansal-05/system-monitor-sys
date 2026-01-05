@@ -16,14 +16,14 @@ def evaluate_scaling(metric):
 
     decision = "NO_ACTION"
 
-    # Reactive scaling
+    
     if cpu > SCALE_UP_CPU or mem > SCALE_UP_MEM:
         decision = "SCALE_UP"
 
     elif cpu < SCALE_DOWN_CPU and mem < SCALE_DOWN_MEM:
         decision = "SCALE_DOWN"
 
-    # Predictive scaling
+    
     cpu_history.append(cpu)
 
     if len(cpu_history) == 10:
