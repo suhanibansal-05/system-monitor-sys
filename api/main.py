@@ -23,7 +23,7 @@ async def receive_metrics(metric: Metric):
     data = metric.dict()
     metrics_store.append(data)
 
-    # save to CSV
+    
     with open(CSV_FILE, "a", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=data.keys())
         if f.tell() == 0:
