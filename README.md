@@ -56,5 +56,14 @@ The system was prototyped using **WSL2**, but the architecture is cloud-agnostic
 python3 -m venv venv
 source venv/bin/activate
 pip install fastapi uvicorn psutil requests pandas scikit-learn
-
-
+```
+### 2. Start API server
+```bash
+python -m uvicorn api.main:app --reload
+```
+### 3. Run monitoring agents
+```bash
+export NODE_ID=node_A
+python agent/agent.py
+```
+Done! you have a working monitoring system.
